@@ -28,21 +28,58 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 
 /**
- * Response
+ * ResponseDefault
  */
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-10-09T14:11:20.784Z[GMT]")
-public class Response {
+public class ResponseDefault extends Response {
+
+    @SerializedName("data")
+    private Data data = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    public String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+     * Get data
+     * 
+     * @return data
+     **/
+    @Schema(description = "")
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
         }
-        return o.toString().replace("\n", "\n    ");
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Response ra = (Response) o;
+        return Objects.equals(this.data, ra.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(data);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Response {\n");
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(data);
+
+        sb.append("    data: ").append("\n");
+        sb.append("    ").append(toIndentedString(json)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
 }

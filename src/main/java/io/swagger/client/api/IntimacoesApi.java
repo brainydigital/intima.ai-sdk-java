@@ -20,6 +20,8 @@ import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
 import io.swagger.client.ProgressRequestBody;
 import io.swagger.client.ProgressResponseBody;
+import io.swagger.client.model.Response;
+import io.swagger.client.model.ResponseIntimacoes;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -117,8 +119,8 @@ public class IntimacoesApi {
      * 
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getAllIntimacoes() throws ApiException {
-        getAllIntimacoesWithHttpInfo();
+    public ApiResponse<Response> getAllIntimacoes() throws ApiException {
+        return getAllIntimacoesWithHttpInfo();
     }
 
     /**
@@ -127,9 +129,9 @@ public class IntimacoesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getAllIntimacoesWithHttpInfo() throws ApiException {
+    public ApiResponse<Response> getAllIntimacoesWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getAllIntimacoesValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        return apiClient.execute(call, ResponseIntimacoes.class);
     }
 
     /**

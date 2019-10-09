@@ -20,6 +20,7 @@ import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
 import io.swagger.client.ProgressRequestBody;
 import io.swagger.client.ProgressResponseBody;
+import io.swagger.client.model.Response;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -132,8 +133,8 @@ public class CopiasApi {
      * @param pjeAuthId é o id referente ao tribunal cadastrado em \&quot;Tribunais ativos\&quot; no Intima.ai (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void createProcessCopy(String processo, Integer pjeAuthId) throws ApiException {
-        createProcessCopyWithHttpInfo(processo, pjeAuthId);
+    public ApiResponse<Response> createProcessCopy(String processo, Integer pjeAuthId) throws ApiException {
+        return createProcessCopyWithHttpInfo(processo, pjeAuthId);
     }
 
     /**
@@ -144,9 +145,9 @@ public class CopiasApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> createProcessCopyWithHttpInfo(String processo, Integer pjeAuthId) throws ApiException {
+    public ApiResponse<Response> createProcessCopyWithHttpInfo(String processo, Integer pjeAuthId) throws ApiException {
         com.squareup.okhttp.Call call = createProcessCopyValidateBeforeCall(processo, pjeAuthId, null, null);
-        return apiClient.execute(call);
+        return apiClient.execute(call, Response.class);
     }
 
     /**

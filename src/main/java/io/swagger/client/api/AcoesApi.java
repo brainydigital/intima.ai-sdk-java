@@ -149,7 +149,7 @@ public class AcoesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getActionStatusAsync(Integer pjeActionId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call getActionStatusAsync(Integer pjeActionId, final ApiCallback<Response> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -171,7 +171,7 @@ public class AcoesApi {
         }
 
         com.squareup.okhttp.Call call = getActionStatusValidateBeforeCall(pjeActionId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        apiClient.executeAsync(call, Response.class, callback);
         return call;
     }
 }
