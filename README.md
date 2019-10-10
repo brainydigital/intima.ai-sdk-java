@@ -112,5 +112,5 @@ Classe | Metodo | Requisição HTTP | Descrição
 
 ## Recomendações
 
-É recomendado criar uma instância de `ApiClient` por thread em um ambiente multithread, para evitar potênciais erros.
+É recomendado criar uma instância de `ApiClient` por thread em um ambiente multithread, para evitar potênciais problemas.
 
