@@ -1,8 +1,8 @@
 # AcoesApi
 
-All URIs are relative to *https://app.intima.ai/api*
+Todas as URIs são relativas a *https://app.intima.ai/api*
 
-Method | HTTP request | Description
+Metodo | Requisição HTTP | Descrição
 ------------- | ------------- | -------------
 [**getActionStatus**](AcoesApi.md#getActionStatus) | **GET** /actions/status/{pje_action_id} | Checa o resultado de uma ação
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Checa o resultado de uma ação
 
-### Example
+### Exemplo
 ```java
 // Import classes:
 //import io.swagger.client.ApiClient;
@@ -23,11 +23,9 @@ Checa o resultado de uma ação
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure API key authorization: ApiKeyAuth
+// Configure API key authorization: ApiKeyAuth (api_token)
 ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 ApiKeyAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKeyAuth.setApiKeyPrefix("Token");
 
 AcoesApi apiInstance = new AcoesApi();
 Integer pjeActionId = 56; // Integer | é fornecido após se realizar a requisição de qualquer ação para o Intima.ai
@@ -39,22 +37,22 @@ try {
 }
 ```
 
-### Parameters
+### Parametros
 
-Name | Type | Description  | Notes
+Nome | Tipo | Descrição | Notas
 ------------- | ------------- | ------------- | -------------
- **pjeActionId** | **Integer**| é fornecido após se realizar a requisição de qualquer ação para o Intima.ai |
+ **pjeActionId** | **Integer**| é fornecido após se realizar a requisição de qualquer ação para o Intima.ai | [obrigatório]
 
-### Return type
+### Tipo de retorno
 
-null (empty response body)
+ApiResponse\<Response>
 
-### Authorization
+### Autorização
 
 [ApiKeyAuth](../README.md#ApiKeyAuth)
 
-### HTTP request headers
+### HTTP headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 

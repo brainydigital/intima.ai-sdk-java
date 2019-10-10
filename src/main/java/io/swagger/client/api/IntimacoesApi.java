@@ -35,7 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class IntimacoesApi {
+public class IntimacoesApi extends Api {
     private ApiClient apiClient;
 
     public IntimacoesApi() {
@@ -107,11 +107,6 @@ public class IntimacoesApi {
         
         com.squareup.okhttp.Call call = getAllIntimacoesCall(progressListener, progressRequestListener);
         return call;
-
-        
-        
-        
-        
     }
 
     /**

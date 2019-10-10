@@ -1,8 +1,8 @@
 # IntimacoesApi
 
-All URIs are relative to *https://app.intima.ai/api*
+Todas as URIs são relativas a *https://app.intima.ai/api*
 
-Method | HTTP request | Description
+Metodo | Requisição HTTP | Descrição
 ------------- | ------------- | -------------
 [**getAllIntimacoes**](IntimacoesApi.md#getAllIntimacoes) | **GET** /intimacoes | Visualiza todas as intimações capturadas
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Visualiza todas as intimações capturadas
 
-### Example
+### Exemplo
 ```java
 // Import classes:
 //import io.swagger.client.ApiClient;
@@ -23,11 +23,9 @@ Visualiza todas as intimações capturadas
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure API key authorization: ApiKeyAuth
+// Configure API key authorization: ApiKeyAuth (api_token)
 ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 ApiKeyAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKeyAuth.setApiKeyPrefix("Token");
 
 IntimacoesApi apiInstance = new IntimacoesApi();
 try {
@@ -38,19 +36,19 @@ try {
 }
 ```
 
-### Parameters
-This endpoint does not need any parameter.
+### Parametros
+Este endpoint não pussui parametros.
 
-### Return type
+### Tipo de retorno
 
-null (empty response body)
+ApiResponse\<Response>
 
-### Authorization
+### Autorização
 
 [ApiKeyAuth](../README.md#ApiKeyAuth)
 
-### HTTP request headers
+### HTTP headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 

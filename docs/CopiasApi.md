@@ -1,8 +1,8 @@
 # CopiasApi
 
-All URIs are relative to *https://app.intima.ai/api*
+Todas as URIs são relativas a *https://app.intima.ai/api*
 
-Method | HTTP request | Description
+Metodo | Requisição HTTP | Descrição
 ------------- | ------------- | -------------
 [**createProcessCopy**](CopiasApi.md#createProcessCopy) | **POST** /actions/processos/copy/{pje_auth_id} | Realiza uma nova cópia processual
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Realiza uma nova cópia processual
 
-### Example
+### Exemplo
 ```java
 // Import classes:
 //import io.swagger.client.ApiClient;
@@ -23,11 +23,9 @@ Realiza uma nova cópia processual
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure API key authorization: ApiKeyAuth
+// Configure API key authorization: ApiKeyAuth (api_token)
 ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 ApiKeyAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKeyAuth.setApiKeyPrefix("Token");
 
 CopiasApi apiInstance = new CopiasApi();
 String processo = "processo_example"; // String | 
@@ -40,22 +38,22 @@ try {
 }
 ```
 
-### Parameters
+### Parametros
 
-Name | Type | Description  | Notes
+Nome | Tipo | Descrição | Notas
 ------------- | ------------- | ------------- | -------------
- **processo** | **String**|  |
- **pjeAuthId** | **Integer**| é o id referente ao tribunal cadastrado em \&quot;Tribunais ativos\&quot; no Intima.ai |
+ **processo** | **String**| é o numero do processo no qual se deseja realizar a cópia processual | [obrigatório]
+ **pjeAuthId** | **Integer**| é o id referente ao tribunal cadastrado em \&quot;Tribunais ativos\&quot; no Intima.ai | [obrigatório]
 
-### Return type
+### Tipo de retorno
 
-null (empty response body)
+ApiResponse\<Response>
 
-### Authorization
+### Autorização
 
 [ApiKeyAuth](../README.md#ApiKeyAuth)
 
-### HTTP request headers
+### HTTP headers
 
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json

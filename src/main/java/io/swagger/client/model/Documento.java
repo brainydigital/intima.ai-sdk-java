@@ -28,6 +28,7 @@ import java.io.IOException;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-10-09T14:11:20.784Z[GMT]")
 public class Documento {
+
   @SerializedName("arquivo")
   private File arquivo = null;
 
@@ -43,6 +44,17 @@ public class Documento {
   public Documento arquivo(File arquivo) {
     this.arquivo = arquivo;
     return this;
+  }
+
+  public Documento() {
+
+  }
+
+  public Documento(File arquivo, Integer tipoDocumento, String descricaoDocumento, Integer order) {
+    this.arquivo = arquivo;
+    this.tipoDocumento = tipoDocumento;
+    this.descricaoDocumento = descricaoDocumento;
+    this.order = order;
   }
 
    /**

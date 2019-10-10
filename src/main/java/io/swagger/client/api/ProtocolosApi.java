@@ -27,6 +27,8 @@ import java.io.IOException;
 
 
 import io.swagger.client.model.Documento;
+import io.swagger.client.model.Response;
+import io.swagger.client.model.ResponseDefault;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProtocolosApi {
+public class ProtocolosApi extends Api {
     private ApiClient apiClient;
 
     public ProtocolosApi() {
@@ -59,12 +61,14 @@ public class ProtocolosApi {
      * @param tipoDocumentoMensagemGeral  (required)
      * @param documentos  (required)
      * @param pjeAuthId é o id referente ao tribunal cadastrado em \&quot;Tribunais ativos\&quot; no Intima.ai (required)
+     * @param mensagem_geral é o texto do conteúdo do protocolo (texto padrão: SEGUE EM ANEXO) (optional)
+     * @param descricao é a descrição da mensagem geral (caso não se informe este campo, ele assumira o valor do campo tipo_documento_mensagem_geral) (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call createProcessProtocoloCall(String numeroProcesso, Integer tipoDocumentoMensagemGeral, List<Documento> documentos, Integer pjeAuthId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call createProcessProtocoloCall(String numeroProcesso, Integer tipoDocumentoMensagemGeral, List<Documento> documentos, Integer pjeAuthId, String mensagem_geral, String descricao, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -83,6 +87,10 @@ public class ProtocolosApi {
         localVarFormParams.put("tipo_documento_mensagem_geral", tipoDocumentoMensagemGeral);
         if (documentos != null)
         localVarFormParams.put("documentos", documentos);
+        if (mensagem_geral != null)
+        localVarFormParams.put("mensagem_geral", mensagem_geral);
+        if (descricao != null)
+        localVarFormParams.put("descricao", descricao);
 
         final String[] localVarAccepts = {
             "application/json"
@@ -113,31 +121,35 @@ public class ProtocolosApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call createProcessProtocoloValidateBeforeCall(String numeroProcesso, Integer tipoDocumentoMensagemGeral, List<Documento> documentos, Integer pjeAuthId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call createProcessProtocoloValidateBeforeCall(String numeroProcesso, Integer tipoDocumentoMensagemGeral, List<Documento> documentos, Integer pjeAuthId, String mensagem_geral, String descricao, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'numeroProcesso' is set
         if (numeroProcesso == null) {
-            throw new ApiException("Missing the required parameter 'numeroProcesso' when calling createProcessProtocolo(Async)");
+            throw new ApiException(invalidFieldMessage("numeroProcesso"));
         }
         // verify the required parameter 'tipoDocumentoMensagemGeral' is set
         if (tipoDocumentoMensagemGeral == null) {
-            throw new ApiException("Missing the required parameter 'tipoDocumentoMensagemGeral' when calling createProcessProtocolo(Async)");
+            throw new ApiException(invalidFieldMessage("tipoDocumentoMensagemGeral"));
         }
         // verify the required parameter 'documentos' is set
         if (documentos == null) {
-            throw new ApiException("Missing the required parameter 'documentos' when calling createProcessProtocolo(Async)");
+            throw new ApiException(invalidFieldMessage("documentos"));
+        } else {
+            for (Documento documento : documentos) {
+                if (documento.getDescricaoDocumento() == null || documento.getDescricaoDocumento() == "") {
+                    throw new ApiException(invalidFieldMessage("documentos.descricaoDocumento"));
+                }
+                if (documento.getOrder() == null) {
+                    throw new ApiException(invalidFieldMessage("documentos.Order"));
+                }
+            }
         }
         // verify the required parameter 'pjeAuthId' is set
         if (pjeAuthId == null) {
-            throw new ApiException("Missing the required parameter 'pjeAuthId' when calling createProcessProtocolo(Async)");
+            throw new ApiException(invalidFieldMessage("pjeAuthId"));
         }
         
-        com.squareup.okhttp.Call call = createProcessProtocoloCall(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createProcessProtocoloCall(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId, mensagem_geral, descricao, progressListener, progressRequestListener);
         return call;
-
-        
-        
-        
-        
     }
 
     /**
@@ -147,10 +159,13 @@ public class ProtocolosApi {
      * @param tipoDocumentoMensagemGeral  (required)
      * @param documentos  (required)
      * @param pjeAuthId é o id referente ao tribunal cadastrado em \&quot;Tribunais ativos\&quot; no Intima.ai (required)
+     * @param mensagem_geral é o texto do conteúdo do protocolo (texto padrão: SEGUE EM ANEXO) (optional)
+     * @param descricao é a descrição da mensagem geral (caso não se informe este campo, ele assumira o valor do campo tipo_documento_mensagem_geral) (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void createProcessProtocolo(String numeroProcesso, Integer tipoDocumentoMensagemGeral, List<Documento> documentos, Integer pjeAuthId) throws ApiException {
-        createProcessProtocoloWithHttpInfo(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId);
+    public ApiResponse<Response> createProcessProtocolo(String numeroProcesso, Integer tipoDocumentoMensagemGeral, List<Documento> documentos, Integer pjeAuthId, String mensagem_geral, String descricao) throws ApiException {
+        return createProcessProtocoloWithHttpInfo(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId, 
+                mensagem_geral, descricao);
     }
 
     /**
@@ -160,12 +175,15 @@ public class ProtocolosApi {
      * @param tipoDocumentoMensagemGeral  (required)
      * @param documentos  (required)
      * @param pjeAuthId é o id referente ao tribunal cadastrado em \&quot;Tribunais ativos\&quot; no Intima.ai (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param mensagem_geral é o texto do conteúdo do protocolo (texto padrão: SEGUE EM ANEXO) (optional)
+     * @param descricao é a descrição da mensagem geral (caso não se informe este campo, ele assumira o valor do campo tipo_documento_mensagem_geral) (optional)
+     * @return ApiResponse&lt;Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> createProcessProtocoloWithHttpInfo(String numeroProcesso, Integer tipoDocumentoMensagemGeral, List<Documento> documentos, Integer pjeAuthId) throws ApiException {
-        com.squareup.okhttp.Call call = createProcessProtocoloValidateBeforeCall(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId, null, null);
-        return apiClient.execute(call);
+    public ApiResponse<Response> createProcessProtocoloWithHttpInfo(String numeroProcesso, Integer tipoDocumentoMensagemGeral, List<Documento> documentos, Integer pjeAuthId, String mensagem_geral,
+            String descricao) throws ApiException {
+        com.squareup.okhttp.Call call = createProcessProtocoloValidateBeforeCall(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId, mensagem_geral, descricao, null, null);
+        return apiClient.execute(call, ResponseDefault.class);
     }
 
     /**
@@ -175,11 +193,13 @@ public class ProtocolosApi {
      * @param tipoDocumentoMensagemGeral  (required)
      * @param documentos  (required)
      * @param pjeAuthId é o id referente ao tribunal cadastrado em \&quot;Tribunais ativos\&quot; no Intima.ai (required)
+     * @param mensagem_geral é o texto do conteúdo do protocolo (texto padrão: SEGUE EM ANEXO) (optional)
+     * @param descricao é a descrição da mensagem geral (caso não se informe este campo, ele assumira o valor do campo tipo_documento_mensagem_geral) (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createProcessProtocoloAsync(String numeroProcesso, Integer tipoDocumentoMensagemGeral, List<Documento> documentos, Integer pjeAuthId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call createProcessProtocoloAsync(String numeroProcesso, Integer tipoDocumentoMensagemGeral, List<Documento> documentos, Integer pjeAuthId, String mensagem_geral, String descricao, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -200,7 +220,7 @@ public class ProtocolosApi {
             };
         }
 
-        com.squareup.okhttp.Call call = createProcessProtocoloValidateBeforeCall(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createProcessProtocoloValidateBeforeCall(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId, mensagem_geral, descricao, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }

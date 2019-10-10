@@ -21,6 +21,7 @@ import io.swagger.client.Pair;
 import io.swagger.client.ProgressRequestBody;
 import io.swagger.client.ProgressResponseBody;
 import io.swagger.client.model.Response;
+import io.swagger.client.model.ResponseDefault;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -34,7 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EscutasApi {
+public class EscutasApi extends Api {
     private ApiClient apiClient;
 
     public EscutasApi() {
@@ -110,20 +111,15 @@ public class EscutasApi {
     private com.squareup.okhttp.Call createProcessEscutaValidateBeforeCall(String processo, Integer pjeAuthId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'processo' is set
         if (processo == null) {
-            throw new ApiException("Missing the required parameter 'processo' when calling createProcessEscuta(Async)");
+            throw new ApiException(invalidFieldMessage("processo"));
         }
         // verify the required parameter 'pjeAuthId' is set
         if (pjeAuthId == null) {
-            throw new ApiException("Missing the required parameter 'pjeAuthId' when calling createProcessEscuta(Async)");
+            throw new ApiException(invalidFieldMessage("pjeAuthId"));
         }
         
         com.squareup.okhttp.Call call = createProcessEscutaCall(processo, pjeAuthId, progressListener, progressRequestListener);
         return call;
-
-        
-        
-        
-        
     }
 
     /**
@@ -147,7 +143,7 @@ public class EscutasApi {
      */
     public ApiResponse<Response> createProcessEscutaWithHttpInfo(String processo, Integer pjeAuthId) throws ApiException {
         com.squareup.okhttp.Call call = createProcessEscutaValidateBeforeCall(processo, pjeAuthId, null, null);
-        return apiClient.execute(call, Response.class);
+        return apiClient.execute(call, ResponseDefault.class);
     }
 
     /**

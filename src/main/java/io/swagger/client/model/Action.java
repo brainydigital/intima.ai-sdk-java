@@ -1,7 +1,7 @@
 package io.swagger.client.model;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.client.model.Response.Data;
+import io.swagger.client.model.Data;
 
 public class Action {
 

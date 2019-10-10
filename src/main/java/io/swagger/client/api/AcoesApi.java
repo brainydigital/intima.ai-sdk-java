@@ -21,6 +21,7 @@ import io.swagger.client.Pair;
 import io.swagger.client.ProgressRequestBody;
 import io.swagger.client.ProgressResponseBody;
 import io.swagger.client.model.Response;
+import io.swagger.client.model.ResponseDefault;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -34,7 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AcoesApi {
+public class AcoesApi extends Api {
     private ApiClient apiClient;
 
     public AcoesApi() {
@@ -112,11 +113,6 @@ public class AcoesApi {
         
         com.squareup.okhttp.Call call = getActionStatusCall(pjeActionId, progressListener, progressRequestListener);
         return call;
-
-        
-        
-        
-        
     }
 
     /**
@@ -138,7 +134,7 @@ public class AcoesApi {
      */
     public ApiResponse<Response> getActionStatusWithHttpInfo(Integer pjeActionId) throws ApiException {
         com.squareup.okhttp.Call call = getActionStatusValidateBeforeCall(pjeActionId, null, null);
-        return apiClient.execute(call, Response.class);
+        return apiClient.execute(call, ResponseDefault.class);
     }
 
     /**

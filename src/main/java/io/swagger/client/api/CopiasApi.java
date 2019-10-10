@@ -21,6 +21,7 @@ import io.swagger.client.Pair;
 import io.swagger.client.ProgressRequestBody;
 import io.swagger.client.ProgressResponseBody;
 import io.swagger.client.model.Response;
+import io.swagger.client.model.ResponseDefault;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -34,7 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CopiasApi {
+public class CopiasApi extends Api {
     private ApiClient apiClient;
 
     public CopiasApi() {
@@ -110,20 +111,15 @@ public class CopiasApi {
     private com.squareup.okhttp.Call createProcessCopyValidateBeforeCall(String processo, Integer pjeAuthId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'processo' is set
         if (processo == null) {
-            throw new ApiException("Missing the required parameter 'processo' when calling createProcessCopy(Async)");
+            throw new ApiException(invalidFieldMessage("processo"));
         }
         // verify the required parameter 'pjeAuthId' is set
         if (pjeAuthId == null) {
-            throw new ApiException("Missing the required parameter 'pjeAuthId' when calling createProcessCopy(Async)");
+            throw new ApiException(invalidFieldMessage("pjeAuthId"));
         }
         
         com.squareup.okhttp.Call call = createProcessCopyCall(processo, pjeAuthId, progressListener, progressRequestListener);
         return call;
-
-        
-        
-        
-        
     }
 
     /**
@@ -147,7 +143,7 @@ public class CopiasApi {
      */
     public ApiResponse<Response> createProcessCopyWithHttpInfo(String processo, Integer pjeAuthId) throws ApiException {
         com.squareup.okhttp.Call call = createProcessCopyValidateBeforeCall(processo, pjeAuthId, null, null);
-        return apiClient.execute(call, Response.class);
+        return apiClient.execute(call, ResponseDefault.class);
     }
 
     /**

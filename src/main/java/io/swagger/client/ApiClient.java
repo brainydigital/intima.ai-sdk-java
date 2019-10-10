@@ -48,6 +48,7 @@ import io.swagger.client.auth.Authentication;
 import io.swagger.client.auth.HttpBasicAuth;
 import io.swagger.client.auth.ApiKeyAuth;
 import io.swagger.client.auth.OAuth;
+import io.swagger.client.model.Documento;
 
 public class ApiClient {
 
@@ -1115,11 +1116,44 @@ public class ApiClient {
                 Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"; filename=\"" + file.getName() + "\"");
                 MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));
                 mpBuilder.addPart(partHeaders, RequestBody.create(mediaType, file));
-            } else {
+            } else if(param.getValue() instanceof Collection) {
+
+                List<Documento> documents = (List) param.getValue();
+
+                if (documents.size() > 0) {
+                    int index = 0;
+                    for (Documento documento : documents) {
+                        
+                        File file = (File) documento.getArquivo();
+                        Headers headersArquivo = Headers.of("Content-Disposition",
+                                "form-data; name=\"" + "documentos[arquivos][" + index + "]" + "\"; filename=\"" + file.getName() + "\"");
+                        MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));
+                        mpBuilder.addPart(headersArquivo, RequestBody.create(mediaType, file));
+
+                        Headers headersTipoDocumento = Headers.of("Content-Disposition",
+                                "form-data; name=\"" + "documentos[documentos_info][" + index + "][tipo_documento]" + "\"");
+                        mpBuilder.addPart(headersTipoDocumento, RequestBody.create(null, parameterToString(documento.getTipoDocumento())));
+
+                        Headers headersDescricaoDocumento = Headers.of("Content-Disposition", "form-data; name=\""
+                                + "documentos[documentos_info][" + index + "][descricao_documento]" + "\"");
+                        mpBuilder.addPart(headersDescricaoDocumento,
+                                RequestBody.create(null, parameterToString(documento.getDescricaoDocumento())));
+
+                        Headers headersOrder = Headers.of("Content-Disposition", "form-data; name=\""
+                                + "documentos[documentos_info][" + index + "][order]" + "\"");
+                        mpBuilder.addPart(headersOrder,
+                                RequestBody.create(null, parameterToString(documento.getOrder())));
+
+                        index++;
+                    }
+                }
+            }
+            else {
                 Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"");
                 mpBuilder.addPart(partHeaders, RequestBody.create(null, parameterToString(param.getValue())));
             }
         }
+
         return mpBuilder.build();
     }
 

@@ -1,6 +1,6 @@
 # ProtocolosApi
 
-All URIs are relative to *https://app.intima.ai/api*
+Todas as URIs são relativas a *https://app.intima.ai/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,11 +8,11 @@ Method | HTTP request | Description
 
 <a name="createProcessProtocolo"></a>
 # **createProcessProtocolo**
-> createProcessProtocolo(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId)
+> createProcessProtocolo(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId, mensagem_geral, descricao)
 
 Realiza um novo protocolo
 
-### Example
+### Exemplo
 ```java
 // Import classes:
 //import io.swagger.client.ApiClient;
@@ -23,11 +23,9 @@ Realiza um novo protocolo
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-// Configure API key authorization: ApiKeyAuth
+// Configure API key authorization: ApiKeyAuth (api_token)
 ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 ApiKeyAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKeyAuth.setApiKeyPrefix("Token");
 
 ProtocolosApi apiInstance = new ProtocolosApi();
 String numeroProcesso = "numeroProcesso_example"; // String | 
@@ -42,20 +40,20 @@ try {
 }
 ```
 
-### Parameters
+### Parametros
 
-Name | Type | Description  | Notes
+Nome | Tipo | Descrição | Notas
 ------------- | ------------- | ------------- | -------------
- **numeroProcesso** | **String**|  |
- **tipoDocumentoMensagemGeral** | **Integer**|  |
- **documentos** | [**List&lt;Documento&gt;**](Documento.md)|  |
- **pjeAuthId** | **Integer**| é o id referente ao tribunal cadastrado em \&quot;Tribunais ativos\&quot; no Intima.ai |
+ **numeroProcesso** | **String**| é o numero do processo no qual se deseja realizar a protocolo processual | [obrigatório]
+ **tipoDocumentoMensagemGeral** | **Integer**| é o id referente ao tipo de documento da mensagem geral | [obrigatório]
+ **documentos** | [**List&lt;Documento&gt;**](Documento.md)| são os anexos relacionados ao protocolo | [obrigatório]
+ **pjeAuthId** | **Integer**| é o id referente ao tribunal cadastrado em \&quot;Tribunais ativos\&quot; no Intima.ai | [obrigatório]
 
-### Return type
+### Tipo de retorno
 
-null (empty response body)
+ApiResponse\<Response>
 
-### Authorization
+### Autorização
 
 [ApiKeyAuth](../README.md#ApiKeyAuth)
 
