@@ -4,7 +4,7 @@
   <artifactId>intimai-sdk-java</artifactId>
   <packaging>jar</packaging>
   <name>intimai-sdk-java</name>
-  <version>1.0.0</version>
+  <version>1.0.0-SNAPSHOT</version>
   <url>https://github.com/brainydigital/intimai-sdk-java</url>
   <description>Implementação da API do Intima.ai em forma de SDK Client para JAVA.</description>
   <scm>
