@@ -25,3 +25,4 @@ src/main/java/io/swagger/client/TestJava.java
 .vscode
 git_push.sh
 gradle/.DS_Store
+settings.xml

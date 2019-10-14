@@ -44,7 +44,9 @@ public class ProtocolosApiTest {
         Integer tipoDocumentoMensagemGeral = null;
         List<Documento> documentos = null;
         Integer pjeAuthId = null;
-        api.createProcessProtocolo(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId);
+        String mensagem_geral = null;
+        String descricao = null;
+        api.createProcessProtocolo(numeroProcesso, tipoDocumentoMensagemGeral, documentos, pjeAuthId, mensagem_geral, descricao);
 
         // TODO: test validations
     }

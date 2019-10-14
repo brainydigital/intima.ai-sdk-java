@@ -59,7 +59,7 @@ public class ResponseDefault extends Response {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Response ra = (Response) o;
+        ResponseDefault ra = (ResponseDefault) o;
         return Objects.equals(this.data, ra.data);
     }
 
