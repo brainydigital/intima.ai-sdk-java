@@ -5,7 +5,7 @@
   <artifactId>intimai-sdk-java</artifactId>
   <packaging>jar</packaging>
   <name>intimai-sdk-java</name>
-  <version>1.0.0</version>
+  <version>1.0.0-SNAPSHOT</version>
   <url>https://github.com/brainydigital/intimai-sdk-java</url>
   <description>Implementação da API do Intima.ai em forma de SDK Client para JAVA.</description>
   <scm>
@@ -19,11 +19,11 @@
 
   <distributionManagement>
     <snapshotRepository>
-      <id>intimai-sdk-java</id>
+      <id>sonatype-nexus-snapshots</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
     <repository>
-      <id>intimai-sdk-java</id>
+      <id>sonatype-nexus-staging</id>
       <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
   </distributionManagement>
@@ -51,7 +51,7 @@
         <version>1.6.7</version>
         <extensions>true</extensions>
         <configuration>
-          <serverId>intimai-sdk-java</serverId>
+          <serverId>ossrh</serverId>
           <nexusUrl>https://oss.sonatype.org/</nexusUrl>
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>
@@ -167,6 +167,12 @@
   <profiles>
     <profile>
       <id>sign-artifacts</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
       <build>
         <plugins>
           <plugin>
