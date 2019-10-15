@@ -4,7 +4,10 @@
     <img src="docs/images/logo.png" alt="Logo" width="120" height="120">
   </a>
   
-  [![Contributors][contributors-shield]][contributors-url]
+  [![JitPack - Downloads](https://img.shields.io/jitpack/dm/github/brainydigital/intimai-sdk-java.svg?style=flat&color=97ca00)](https://search.maven.org/artifact/com.github.brainydigital/intimai-sdk-java "View this project on mc")
+  [![Node - Version](https://img.shields.io/maven-central/v/com.github.brainydigital/intimai-sdk-java.svg?style=flat&color=blue)](https://search.maven.org/artifact/com.github.brainydigital/intimai-sdk-java "View this project on mc")
+  [![Contributors](https://img.shields.io/badge/contributors-1-yellow.svg)](https://github.com/brainydigital/intimai-sdk-java/graphs/contributors)
+  [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 </div>
 
 # Intima.ai - SDK JAVA
@@ -121,7 +124,3 @@ Classe | Metodo | Requisição HTTP | Descrição
 ## Recomendações
 
 É recomendado criar uma instância de `ApiClient` por thread em um ambiente multithread, para evitar potênciais problemas.
-
-<!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: ./docs/images/contributors-count.svg
-[contributors-url]: https://github.com/brainydigital/intimai-sdk-java/graphs/contributors
