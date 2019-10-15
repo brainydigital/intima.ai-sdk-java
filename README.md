@@ -18,10 +18,9 @@ Adicione esta dependência no POM do seu projeto:
 
 ```xml
 <dependency>
-  <groupId>brainydigital</groupId>
+  <groupId>com.github.brainydigital</groupId>
   <artifactId>intimai-sdk-java</artifactId>
   <version>1.0.0</version>
-  <scope>compile</scope>
 </dependency>
 ```
 
@@ -36,7 +35,7 @@ mvn clean install
 Adicione esta dependência no build file do seu projeto:
 
 ```groovy
-compile "brainydigital:intimai-sdk-java:1.0.0"
+implementation 'com.github.brainydigital:intimai-sdk-java:1.0.0'
 ```
 
 ### Instalação manual
@@ -49,7 +48,7 @@ mvn clean package
 
 Então instale manualmente os seguintes JARs:
 
-* `target/swagger-java-client-1.0.0.jar`
+* `target/intimai-sdk-java-*.jar`
 * `target/lib/*.jar`
 
 ## Começando

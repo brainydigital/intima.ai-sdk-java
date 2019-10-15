@@ -17,7 +17,7 @@
             </activation>
             <properties>
                 <gpg.homedir>/Users/raunyhenrique/.gnupg</gpg.homedir>
-                <gpg.keyname>ID_KEY_GPG</gpg.keyname>
+                <gpg.keyname>ID_KEY_GPG(8 digitos)</gpg.keyname>
                 <gpg.executable>gpg2</gpg.executable>
                 <gpg.passphrase>password</gpg.passphrase>
             </properties>
